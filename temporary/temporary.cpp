@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
 #include <ctime>
 
 using namespace std;
@@ -24,8 +23,6 @@ public:
         cout << rank << " of " << suit;
     }
 };
-//An extra comment! No way~
-// //What a dumb comment
 // Deck class to represent a deck of cards
 class Deck {
 private:
@@ -190,7 +187,7 @@ public:
 
     bool replay() {
         char choice;
-        cout << "Do you want to play again? (y/n): ";
+        cout << "Do you want to play again? (Y/N): ";
         cin >> choice;
         return choice == 'y';
     }
@@ -207,14 +204,14 @@ public:
 
 
 
-        
+
         while (true) {
             player.addCard(deck.drawCard());
             dealer.addCard(deck.drawCard());
             char choice;
             cout << "Player's Hand: ";
             player.displayHand();
-            cout << "Do you think the next card will be higher (H) or lower (L)? ";
+            cout << "Do you think the next card will be higher (H) or lower (L) or would you like to quit (Q)? ";
             cin >> choice;
             dealer.displayHand();
             int playerScore = player.calculateScore();
@@ -238,7 +235,7 @@ public:
                 if (playerScore < dealerScore) {
                     cout << "victory" << endl;
                 }
-                else if (playerScore==dealerScore){
+                else if (playerScore == dealerScore) {
                     cout << "draw???" << endl;
                 }
 
@@ -251,13 +248,13 @@ public:
 int main() {
     while (true) {
         char choice;
-        cout << "What would you like to play?" << endl << "Black Jack (a)  or  Higher or Lower (b)" << endl;
+        cout << "What would you like to play?" << endl << "Black Jack (B), Higher or Lower (B) or Quit (Q)" << endl;
         cin >> choice;
-        if ((char)tolower(choice) == 'a') {
+        if ((char)tolower(choice) == 'b') {
             BlackJack blackjack;
             BlackJack player;
             BlackJack dealer;
-            
+
             do {
                 blackjack.start();
                 blackjack.player.clearHand();
@@ -265,12 +262,14 @@ int main() {
             } while (blackjack.replay());
             break;
         }
-        if ((char)tolower(choice) == 'b') {
-            cout << "time reversed and this version lacks this option please pick black jack." << endl;
+        else if ((char)tolower(choice) == 'h') {
             HigherorLower higherorlower;
             HigherorLower player;
             HigherorLower dealer;
             higherorlower.start();
+        }
+        else if ((char)tolower(choice) == 'q') {
+            break;
         }
         else
         {
